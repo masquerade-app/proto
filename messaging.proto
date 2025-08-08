@@ -1,0 +1,13 @@
+// Copyright © 2025 William Huffman
+
+// The messaging service defines functionality for sending and recieving user
+// messages.
+
+syntax = "proto3";
+
+package messaging;
+
+
+service Messaging {
+
+}

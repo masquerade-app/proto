@@ -1,0 +1,41 @@
+// Copyright © 2025 William Huffman
+
+// The admin service defines functionality for user accounts and settings.
+
+syntax = "proto3";
+
+package admin;
+
+
+message Account {
+  optional int64 account_id = 1;
+  optional string first_name = 2;
+  optional string last_name = 3;
+  optional string phone_number = 4;
+  optional string password = 5;
+}
+
+message AccountRequest {
+  optional int64 account_id = 1;
+}
+
+enum AdminStatus {
+  UNKNOWN = 0;
+  STATUS_OK = 1;
+  STATUS_ERR = 2;
+}
+
+message AdminResponse {
+  optional AdminStatus status = 1;
+  optional string message = 2;
+}
+
+service Admin {
+  rpc CreateAccount (Account) returns (AdminResponse) {}
+
+  rpc GetAccount (AccountRequest) returns (Account) {}
+
+  rpc UpdateAccount (Account) returns (AdminResponse) {}
+
+  rpc DeleteAccount (AccountRequest) returns (AdminResponse) {}
+}

@@ -1,0 +1,244 @@
+// Copyright © 2025 William Huffman
+
+// The profile service defines functionality for user profile cards.
+
+syntax = "proto3";
+
+package profile;
+
+
+enum Gender {
+  GENDER_UNSPECIFIED = 0;
+  MAN = 1;
+  WOMAN = 2;
+  TRANS_MALE = 3;
+  TRANS_FEMALE = 4;
+  NONBINARY = 5;
+  GENDERFLUID = 6;
+  QUEER = 7;
+  GENDER_CUSTOM = 8;
+}
+
+enum Pronouns {
+  PRONOUNS_UNSPECIFIED = 0;
+  HE_HIM_HIS = 1;
+  SHE_HER_HERS = 2;
+  THEY_THEM_THEIRS = 3;
+  PRONOUNS_CUSTOM = 4;
+}
+
+enum Sexuality {
+  SEXUALITY_UNSPECIFIED = 0;
+  HETEROSEXUAL = 1;
+  HOMOSEXUAL = 2;
+  ASEXUAL = 3;
+  BISEXUAL = 4;
+  DEMISEXUAL = 5;
+  PANSEXUAL = 6;
+  SEXUALITY_CUSTOM = 7;
+}
+
+enum Ethnicity {
+  ETHNICITY_UNSPECIFIED = 0;
+  BLACK = 1;
+  EAST_ASIAN = 2;
+  HISPANIC_LATINO = 3;
+  MIDDLE_EASTERN = 4;
+  NATIVE_AMERICAN = 5;
+  PACIFIC_ISLANDER = 6;
+  SOUTH_ASIAN = 7;
+  SOUTHEAST_ASIAN = 8;
+  WHITE = 9;
+  ETHNICITY_CUSTOM = 10;
+}
+
+enum Education {
+  EDUCATION_UNSPECIFIED = 0;
+  HIGH_SCHOOL = 1;
+  ASSOCIATES = 2;
+  BACHELORS = 3;
+  MASTERS = 4;
+  PHD = 5;
+  TRADE_APPRENTICE = 6;
+  TRADE_JOURNEYMAN = 7;
+  TRADE_MASTER = 8;
+}
+
+enum Religion {
+  RELIGION_UNSPECIFIED = 0;
+  AGNOSTIC = 1;
+  ATHIEST = 2;
+  BUDDHIST = 3;
+  CATHOLIC = 4;
+  CHRISTIAN = 5;
+  HINDU = 6;
+  JEWISH = 7;
+  MUSLIM = 8;
+  SIKH = 9;
+  SPIRITUAL = 10;
+  RELIGION_CUSTOM = 11;
+}
+
+enum Politics {
+  POLITICS_UNSPECIFIED = 0;
+  LIBERAL = 1;
+  MODERATE = 2;
+  CONSERVATIVE = 3;
+  APOLITICAL = 4;
+  POLITICS_CUSTOM = 5;
+}
+
+enum Language {
+  LANGUAGE_UNSPECIFIED = 0;
+  ENGLISH = 1;
+  SPANISH = 2;
+  FRENCH = 3;
+  GERMAN = 4;
+  ITALIAN = 5;
+  MANDARIN = 6;
+  JAPANESE = 7;
+  ARABIC = 8;
+  FARSI = 9;
+  HEBREW = 10;
+  PORTUGUESE = 11;
+  ASL = 12;
+  LANGUAGE_CUSTOM = 13;
+}
+
+enum DatingIntentions {
+  DATING_INTENTIONS_UNSPECIFIED = 0;
+  LIFE_PARTNER = 1;
+  LONG_TERM = 2;
+  SHORT_TERM = 3;
+  DATING_INTENTIONS_UNDECIDED = 4;
+  DATING_INTENTIONS_CUSTOM = 5;
+}
+
+enum Relationship {
+  RELATIONSHIP_UNSPECIFIED = 0;
+  MONOGAMY = 1;
+  NON_MONAGAMY = 2;
+  RELATIONSHIP_UNDECIDED = 3;
+}
+
+enum Pet {
+  PET_UNSPECIFIED = 0;
+  DOG = 1;
+  CAT = 2;
+  BIRD = 3;
+  FISH = 4;
+  REPTILE = 5;
+  PET_CUSTOM = 6;
+}
+
+enum ZodiacSign {
+  ZODIAC_SIGN_UNSPECIFIED = 0;
+  ARIES = 1;
+  TAURUS = 2;
+  GEMINI = 3;
+  CANCER = 4;
+  LEO = 5;
+  VIRGO = 6;
+  LIBRA = 7;
+  SCORPIO = 8;
+  SAGITTARIUS = 9;
+  CAPRICORN = 10;
+  AQUARIUS = 11;
+  PISCES = 12;
+}
+
+enum ChineseZodiac {
+  CHINESE_ZODIAC_UNSPECIFIED = 0;
+}
+
+enum Children {
+  CHILDREN_UNSPECIFIED = 0;
+  HAVE_CHILDREN = 1;
+  WANT_CHILDREN = 2;
+  WANT_MORE_CHILDREN = 3;
+  NO_CHILDREN = 4;
+  DONT_WANT_CHILDREN = 5;
+  UNDECIDED = 6;
+}
+
+enum Prompt {
+  PROMPT_UNSPECIFIED = 0;
+  PROMPT_CUSTOM = 1;
+}
+
+enum Vice {
+  VICE_UNSPECIFIED = 0;
+  YES = 1;
+  SOMETIMES = 2;
+  NO = 3;
+}
+
+message ProfileCard {
+  optional int64 account_id = 1;
+
+  // PII
+  optional string first_name = 2;
+  optional string last_name = 3;
+  optional int64 age = 4;
+  optional int64 height = 5;
+  optional Ethnicity ethnicity = 6;
+  optional string location = 7;
+
+  // Gender identity
+  optional Gender gender = 8;
+  optional Pronouns pronouns = 9;
+  optional Sexuality sexuality = 10;
+  optional Gender interested_in = 11;
+
+  // Personality
+  optional string work = 12;
+  optional string job_title = 13;
+  optional string school = 14;
+  optional Education education = 15;
+  optional Religion beliefs = 16;
+  optional Politics politics = 17;
+  optional string hometown = 18;
+  repeated Language languages = 19;
+  optional DatingIntentions dating_intentions = 20;
+  optional Relationship relationship_type = 21;
+  repeated Pet pets = 22;
+  optional ZodiacSign zodiac_sign = 23;
+  optional ChineseZodiac chinese_zodiac = 24;
+  optional Children children = 25;
+  optional Vice drinking = 26;
+  optional Vice smoking = 27;
+  optional Vice marijuana = 28;
+  optional Vice drugs = 29;
+
+  // Prompts
+  repeated Prompt prompts = 30;
+  repeated string prompt_responses = 31;
+
+  // TODO: style, color, font, layout information
+  // TODO: audio samples?
+}
+
+enum ProfileStatus {
+  UNKNOWN = 0;
+  STATUS_OK = 1;
+  STATUS_ERR = 2;
+}
+
+message ProfileResponse {
+  optional ProfileStatus status = 1;
+  optional string message = 2;
+}
+
+message ProfileRequest {
+  optional int64 account_id = 1;
+}
+
+service Profile {
+  rpc CreateProfile (ProfileCard) returns (ProfileResponse) {}
+
+  rpc GetProfile (ProfileRequest) returns (ProfileCard) {}
+
+  rpc UpdateProfile (ProfileCard) returns (ProfileResponse) {}
+
+  rpc ClearProfile (ProfileRequest) returns (ProfileResponse) {}
+}
