@@ -1,0 +1,13 @@
+// Copyright © 2025 William Huffman
+
+// The discovery service defines functionality for discovering and reading
+// user profile cards.
+
+syntax = "proto3";
+
+package discovery;
+
+
+service Discovery {
+  
+}

@@ -1,0 +1,34 @@
+// Copyright © 2025 William Huffman
+
+// The matching service defines functionality for matching user profile cards.
+
+syntax = "proto3";
+
+package matching;
+
+import "profile.proto";
+
+
+message CheckMatchRequest {
+  optional int64 checker_account_id = 1;
+  optional int64 checked_account_id = 2;
+}
+
+message CheckMatchResponse {
+  optional bool matched = 1;
+}
+
+message ListMatchesRequest {
+  optional int64 account_id = 1;
+}
+
+message ListMatchesResponse {
+  repeated profile.ProfileCard profile = 1;
+  optional string page_token = 2;
+}
+
+service Matching {
+  rpc CheckMatch (CheckMatchRequest) returns (CheckMatchResponse) {}
+
+  rpc ListMatches (ListMatchesRequest) returns (ListMatchesResponse) {}
+}
