@@ -20,9 +20,9 @@ message AccountRequest {
 }
 
 enum AdminStatus {
-  UNKNOWN = 0;
-  STATUS_OK = 1;
-  STATUS_ERR = 2;
+  ADMIN_STATUS_UNSPECIFIED = 0;
+  ADMIN_STATUS_OK = 1;
+  ADMIN_STATUS_ERR = 2;
 }
 
 message AdminResponse {
